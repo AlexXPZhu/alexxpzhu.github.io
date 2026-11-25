@@ -1,0 +1,104 @@
+media:
+  input: assets/notes
+  output: /assets/notes
+  categories: [image]
+
+settings:
+  content:
+    merge: true
+
+content:
+  - name: notes_zh
+    label: 中文笔记
+    type: collection
+    path: _notes_zh
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{hour}{minute}{second}-{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, date]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: body
+        label: 正文
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+      - name: date
+        label: 日期
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: description
+        label: 首页摘要
+        type: text
+      - name: intro
+        label: 文章导语
+        type: text
+      - name: translation_key
+        label: 中英文对应标识
+        type: string
+        description: 两个版本使用同一个标识即可互相切换，例如 first-note。
+        pattern: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      - name: sample
+        label: 标为排版示例
+        type: boolean
+        default: false
+  - name: notes_en
+    label: 英文笔记
+    type: collection
+    path: _notes_en
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{hour}{minute}{second}-{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, date]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: body
+        label: 正文
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+      - name: date
+        label: 日期
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: description
+        label: 首页摘要
+        type: text
+      - name: intro
+        label: 文章导语
+        type: text
+      - name: translation_key
+        label: 中英文对应标识
+        type: string
+        description: 两个版本使用同一个标识即可互相切换，例如 first-note。
+        pattern: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      - name: sample
+        label: 标为排版示例
+        type: boolean
+        default: false

@@ -1,0 +1,25 @@
+url: "https://alexxpzhu.github.io"
+timezone: Asia/Kuala_Lumpur
+future: true
+
+collections:
+  notes_zh:
+    output: true
+    permalink: /notes/:name/
+  notes_en:
+    output: true
+    permalink: /en/notes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: notes_zh
+    values:
+      layout: note
+      lang: zh-CN
+  - scope:
+      path: ""
+      type: notes_en
+    values:
+      layout: note
+      lang: en

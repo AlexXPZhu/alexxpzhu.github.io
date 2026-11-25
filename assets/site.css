@@ -175,6 +175,7 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 }
 
 .note-list { margin: 0; padding: 0; list-style: none; }
+.note-list li + li { margin-top: 0.85rem; }
 .note-list h3 { margin: 0; font-size: 1rem; }
 .note-list time { color: var(--muted); font-size: 0.875rem; }
 .note-list p { margin: 0.25rem 0 0; color: var(--muted); }
@@ -190,16 +191,18 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
   line-height: 1.16;
 }
 .article-lead { margin: 0.85rem 0 0; color: var(--muted); font-size: 1.125rem; line-height: 1.65; }
-.article-page article > section { margin: 0 0 1.8rem; }
-.article-page h2 { margin: 0 0 0.55rem; font-size: 1.45rem; line-height: 1.3; }
-.article-page h3 { margin: 1rem 0 0.35rem; font-size: 1.06rem; }
-.article-page section p, .article-page ol { margin: 0; font-size: 1.0625rem; line-height: 1.7; }
-.article-page ol { padding-inline-start: 1.5rem; }
-.article-page li + li { margin-top: 0.3rem; }
-.article-page blockquote {
-  margin: 1rem 0 0;
+.article-body h2 { margin: 1.65rem 0 0.55rem; font-size: 1.45rem; line-height: 1.3; }
+.article-body h3 { margin: 1rem 0 0.35rem; font-size: 1.06rem; }
+.article-body p, .article-body ol, .article-body ul { margin: 0.5rem 0; font-size: 1.0625rem; line-height: 1.7; }
+.article-body ol, .article-body ul { padding-inline-start: 1.5rem; }
+.article-body li + li { margin-top: 0.3rem; }
+.article-body blockquote {
+  margin: 1rem 0;
   padding: 0.25rem 0 0.25rem 1rem;
   border-inline-start: 3px solid var(--rule);
   color: var(--muted);
 }
-.article-footer { padding-top: 1rem; border-top: 1px solid var(--rule); }
+.article-body blockquote p { margin: 0; }
+.article-body img { display: block; max-width: 100%; height: auto; }
+.article-body pre { overflow-x: auto; padding: 0.75rem 1rem; border: 1px solid var(--rule); }
+.article-footer { margin-top: 1.8rem; padding-top: 1rem; border-top: 1px solid var(--rule); }

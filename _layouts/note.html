@@ -1,0 +1,89 @@
+{%- if page.lang == "en" -%}
+  {%- assign other_notes = site.notes_zh -%}
+  {%- assign other_lang = "zh-CN" -%}
+  {%- assign other_label = "中文" -%}
+  {%- assign other_home = "/" -%}
+  {%- assign home = "/en/" -%}
+  {%- assign author = "Xingpeng Zhu" -%}
+  {%- assign current_label = "English" -%}
+  {%- assign back_label = "Back to technical notes" -%}
+  {%- assign skip_label = "Skip to content" -%}
+  {%- assign nav_label = "Article navigation" -%}
+  {%- assign language_label = "Language" -%}
+  {%- assign sample_label = "Layout preview" -%}
+  {%- assign date_format = "%B %-d, %Y" -%}
+{%- else -%}
+  {%- assign other_notes = site.notes_en -%}
+  {%- assign other_lang = "en" -%}
+  {%- assign other_label = "English" -%}
+  {%- assign other_home = "/en/" -%}
+  {%- assign home = "/" -%}
+  {%- assign author = "朱兴鹏" -%}
+  {%- assign current_label = "中文" -%}
+  {%- assign back_label = "返回技术笔记" -%}
+  {%- assign skip_label = "跳到正文" -%}
+  {%- assign nav_label = "文章导航" -%}
+  {%- assign language_label = "语言" -%}
+  {%- assign sample_label = "排版示例" -%}
+  {%- assign date_format = "%Y 年 %-m 月 %-d 日" -%}
+{%- endif -%}
+{%- if page.translation_key and page.translation_key != "" -%}
+  {%- assign translated_note = other_notes | where: "translation_key", page.translation_key | first -%}
+{%- endif -%}
+{%- assign notes_url = home | relative_url | append: "#notes" -%}
+{%- if translated_note -%}
+  {%- assign switch_url = translated_note.url | relative_url -%}
+{%- else -%}
+  {%- assign switch_url = other_home | relative_url | append: "#notes" -%}
+{%- endif -%}
+<!doctype html>
+<html lang="{{ page.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if page.description and page.description != "" %}<meta name="description" content="{{ page.description | escape }}">{% endif %}
+  <title>{{ page.title | escape }} · {{ author }}</title>
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="alternate" hreflang="{{ page.lang }}" href="{{ page.url | absolute_url }}">
+  {% if translated_note %}<link rel="alternate" hreflang="{{ other_lang }}" href="{{ translated_note.url | absolute_url }}">{% endif %}
+  <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}?v=5">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">{{ skip_label }}</a>
+  <header class="wrap article-wrap site-header">
+    <nav class="site-nav" aria-label="{{ nav_label }}">
+      <a href="{{ notes_url }}">{{ back_label }}</a>
+    </nav>
+    <nav class="languages" aria-label="{{ language_label }}">
+      {% if page.lang == "en" %}
+      <a href="{{ switch_url }}" lang="{{ other_lang }}" hreflang="{{ other_lang }}">{{ other_label }}</a>
+      {% endif %}
+      <span aria-current="page">{{ current_label }}</span>
+      {% if page.lang != "en" %}
+      <a href="{{ switch_url }}" lang="{{ other_lang }}" hreflang="{{ other_lang }}">{{ other_label }}</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main class="wrap article-wrap article-page" id="main">
+    <article aria-labelledby="article-title">
+      <header class="article-heading">
+        <p class="article-meta">
+          {% if page.sample %}{{ sample_label }} <span aria-hidden="true">·</span>{% endif %}
+          <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: date_format }}</time>
+        </p>
+        <h1 id="article-title">{{ page.title | escape }}</h1>
+        {% if page.intro and page.intro != "" %}<p class="article-lead">{{ page.intro | escape }}</p>{% endif %}
+      </header>
+
+      <div class="article-body">
+        {{ content }}
+      </div>
+    </article>
+
+    <footer class="article-footer">
+      <a href="{{ notes_url }}">{{ back_label }}</a>
+    </footer>
+  </main>
+</body>
+</html>

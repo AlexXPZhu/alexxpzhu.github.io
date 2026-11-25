@@ -1,3 +1,5 @@
+---
+---
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -8,7 +10,7 @@
   <link rel="canonical" href="https://alexxpzhu.github.io/">
   <link rel="alternate" hreflang="zh-CN" href="https://alexxpzhu.github.io/">
   <link rel="alternate" hreflang="en" href="https://alexxpzhu.github.io/en/">
-  <link rel="stylesheet" href="assets/site.css?v=4">
+  <link rel="stylesheet" href="assets/site.css?v=5">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">跳到正文</a>
@@ -74,13 +76,7 @@
 
       <section class="content-section" id="notes" aria-labelledby="notes-heading">
         <h2 class="section-title" id="notes-heading">技术笔记</h2>
-        <ul class="note-list">
-          <li>
-            <h3><a href="/notes/first-note/">从一篇论文开始</a></h3>
-            <time datetime="2026-11-25">2026 年 11 月 25 日</time>
-            <p>一篇用占位文字演示正文、引用和清单的笔记。</p>
-          </li>
-        </ul>
+        {% include note-list.html notes=site.notes_zh lang="zh-CN" %}
       </section>
     </div>
   </main>
