@@ -3,138 +3,217 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Xingpeng Zhu 的个人主页与项目。">
+  <meta name="description" content="Xingpeng Zhu 的个人主页，分享 AI 工作流、科研自动化工具和技术笔记。">
   <title>Xingpeng Zhu · 个人主页</title>
   <style>
     :root {
       color-scheme: light;
-      --ink: #182941;
-      --muted: #485a70;
-      --accent: #2856ad;
-      --paper: #f8fafe;
-      --line: #d6e0ee;
+      --paper: #f8fafc;
+      --surface: #fff;
+      --tint: #eaf0fb;
+      --ink: #172238;
+      --muted: #475569;
+      --accent: #234da6;
+      --line: #d9e1ed;
+      --accent-line: #96b2ea;
       font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
       color: var(--ink);
       background: var(--paper);
-      line-height: 1.7;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --paper: #101725;
+        --surface: #172133;
+        --tint: #1b2943;
+        --ink: #edf2fb;
+        --muted: #b8c4d7;
+        --accent: #a7c4ff;
+        --line: #34445e;
+        --accent-line: #6488cc;
+      }
     }
 
     * { box-sizing: border-box; }
+    body, h1, h2, h3, p, dl, dd { margin: 0; }
+    a { color: var(--accent); text-underline-offset: 0.21em; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    [id] { scroll-margin-top: 1.5rem; }
 
-    body { margin: 0; }
+    .wrap { width: min(66rem, calc(100% - 4rem)); margin-inline: auto; }
 
-    a { color: var(--accent); text-underline-offset: 0.25em; }
-
-    a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
+    .skip-link {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      z-index: 1;
+      padding: 0.5rem 0.75rem;
+      background: var(--surface);
+      transform: translateY(-160%);
     }
 
-    .wrap { width: min(65rem, calc(100% - 3rem)); margin-inline: auto; }
+    .skip-link:focus { transform: translateY(0); }
 
     .site-header { border-bottom: 1px solid var(--line); }
 
-    .bar, .nav {
+    .bar, .nav, .footer-links {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.75rem 1.5rem;
+      gap: 0.25rem 1.5rem;
     }
 
-    .bar { justify-content: space-between; padding-block: 1rem; }
-
-    .bar a { color: inherit; text-decoration: none; }
-
-    .bar a:hover { text-decoration: underline; }
-
-    .site-name { font-weight: 700; }
+    .bar { justify-content: space-between; min-height: 4.5rem; }
+    .bar a { padding-block: 0.55rem; color: var(--ink); text-decoration: none; }
+    .bar a:hover { color: var(--accent); text-decoration: underline; }
+    .site-name { font-weight: 750; }
+    .nav { font-size: 0.9375rem; }
 
     .hero {
-      padding: clamp(2.25rem, 7vw, 5rem) clamp(1.5rem, 6vw, 4rem);
-      margin-top: clamp(1.5rem, 5vw, 3rem);
-      background: linear-gradient(125deg, #e1edff, #ecf4ff 65%, #f0f7f9);
-      border: 1px solid var(--line);
-      border-radius: 1.25rem;
-    }
-
-    h1, h2, h3, p { margin: 0; }
-
-    h1 { font-size: clamp(2rem, 6vw, 4rem); line-height: 1.2; }
-
-    h2 { font-size: 1.5rem; line-height: 1.35; }
-
-    h3 { font-size: 1.125rem; line-height: 1.4; }
-
-    p { color: var(--muted); overflow-wrap: anywhere; }
-
-    .hero p { max-width: 32em; margin-top: 0.85rem; font-size: 1.125rem; }
-
-    .sections {
       display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: clamp(1.5rem, 4vw, 3rem);
-      margin-block: 2.5rem 3.5rem;
+      grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.43fr);
+      align-items: end;
+      gap: clamp(2rem, 5vw, 4.25rem);
+      padding-block: clamp(3.5rem, 8vw, 6.25rem) clamp(2.75rem, 6vw, 4.5rem);
     }
 
-    .sections h2 { margin-bottom: 0.85rem; }
+    .greeting { margin-bottom: 0.65rem; color: var(--accent); font-weight: 650; }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.7rem, 7.3vw, 5.65rem);
+      font-weight: 700;
+      letter-spacing: -0.055em;
+      line-height: 1.02;
+    }
+
+    .intro {
+      max-width: 31em;
+      margin-top: 1.45rem;
+      color: var(--muted);
+      font-size: clamp(1.0625rem, 2.1vw, 1.25rem);
+    }
+
+    .now {
+      border: 1px solid var(--line);
+      border-inline-start: 3px solid var(--accent-line);
+      border-radius: 0.65rem;
+      padding: 1.15rem 1.35rem 1.25rem;
+      background: var(--tint);
+    }
+
+    .now h2 { margin-bottom: 0.7rem; font-size: 1.0625rem; }
+    .now dl { display: grid; gap: 0.5rem; }
+    .now dl div { display: grid; grid-template-columns: 3.25em 1fr; gap: 0.55rem; }
+    .now dt { font-weight: 650; }
+    .now dd { color: var(--muted); }
+
+    .content-section { padding-block: 1.8rem 2.5rem; border-top: 1px solid var(--line); }
+    .section-title { margin-bottom: 1.15rem; font-size: 1.45rem; line-height: 1.3; }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
 
     .project {
-      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.7rem;
+      padding: clamp(1.2rem, 3vw, 1.65rem);
       border: 1px solid var(--line);
-      border-radius: 0.875rem;
-      padding: 1.25rem;
+      border-radius: 0.8rem;
+      background: var(--surface);
     }
 
-    .project p { margin-top: 0.375rem; }
+    .project h3 { font-size: 1.2rem; line-height: 1.35; }
+    .project p, .notes p { color: var(--muted); }
+    .project a { margin-top: auto; padding-block: 0.2rem; font-size: 0.9375rem; font-weight: 650; }
+    .notes { padding-bottom: 2.7rem; }
 
-    .site-footer {
-      border-top: 1px solid var(--line);
-      padding-block: 1rem 1.75rem;
+    .site-footer { padding-block: 1.2rem 2rem; border-top: 1px solid var(--line); }
+    .site-footer h2 { font-size: 1rem; }
+    .footer-links { gap: 0.25rem 1.1rem; }
+    .footer-links a { padding-block: 0.4rem; font-size: 0.9375rem; }
+
+    @media (max-width: 46rem) {
+      .wrap { width: calc(100% - 2.5rem); }
+      .hero, .project-grid { grid-template-columns: 1fr; }
+      .hero { align-items: start; }
+      .now { max-width: 26rem; }
     }
 
-    @media (max-width: 40rem) {
+    @media (max-width: 24rem) {
       .wrap { width: calc(100% - 2rem); }
-      .sections { grid-template-columns: 1fr; }
+      .bar { gap: 0 1rem; padding-block: 0.25rem; }
+      .nav { gap: 0 1rem; }
     }
   </style>
 </head>
 <body id="top">
+  <a class="skip-link" href="#main">跳到正文</a>
   <header class="site-header">
     <div class="wrap bar">
       <a class="site-name" href="#top">Xingpeng Zhu</a>
       <nav class="nav" aria-label="主导航">
-        <a href="#about">关于我</a>
         <a href="#projects">项目</a>
-        <a href="#github">GitHub</a>
+        <a href="#notes">笔记</a>
+        <a href="https://github.com/AlexXPZhu">GitHub</a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
+  <main class="wrap" id="main">
     <section class="hero" id="about" aria-labelledby="intro-heading">
-      <h1 id="intro-heading">你好，我是 Xingpeng Zhu。</h1>
-      <p>欢迎来到我的个人主页。</p>
+      <div>
+        <p class="greeting">你好，我是</p>
+        <h1 id="intro-heading">Xingpeng Zhu</h1>
+        <p class="intro">我做一些和 AI 工作流、科研自动化有关的小工具，最近的项目涉及文献整理和模型 API 行为观察。</p>
+      </div>
+
+      <aside class="now" aria-labelledby="now-heading">
+        <h2 id="now-heading">近况</h2>
+        <!-- 补充当前项目和关注方向。 -->
+        <dl>
+          <div><dt>在做</dt><dd>当前项目待补充</dd></div>
+          <div><dt>关注</dt><dd>近期研究方向待补充</dd></div>
+        </dl>
+      </aside>
     </section>
 
-    <div class="sections">
-      <section id="projects" aria-labelledby="projects-heading">
-        <h2 id="projects-heading">我的项目</h2>
+    <section class="content-section" id="projects" aria-labelledby="projects-heading">
+      <h2 class="section-title" id="projects-heading">精选项目</h2>
+      <div class="project-grid">
         <article class="project">
-          <h3>个人主页</h3>
-          <p>用 HTML 和 CSS 搭建，托管在 GitHub Pages。</p>
-          <p><a href="https://github.com/AlexXPZhu/alexxpzhu.github.io">查看主页源码</a></p>
+          <h3 lang="en">Save Papers to Zotero</h3>
+          <p>把论文导入指定的 Zotero 分类，核验 PDF 是否保存，并加上工作流标签。</p>
+          <a href="https://github.com/AlexXPZhu/save-papers-to-zotero" aria-label="查看 Save Papers to Zotero 项目">查看项目</a>
         </article>
-      </section>
+        <article class="project">
+          <h3 lang="en">ModelRadar</h3>
+          <p>在本地观察模型 API 的响应和参数兼容性，保留原始结果供复核。</p>
+          <a href="https://github.com/AlexXPZhu/model-radar" aria-label="查看 ModelRadar 项目">查看项目</a>
+        </article>
+      </div>
+    </section>
 
-      <section id="github" aria-labelledby="github-heading">
-        <h2 id="github-heading">GitHub</h2>
-        <p><a href="https://github.com/AlexXPZhu">@AlexXPZhu</a></p>
-      </section>
-    </div>
+    <section class="content-section notes" id="notes" aria-labelledby="notes-heading">
+      <h2 class="section-title" id="notes-heading">技术笔记</h2>
+      <p>第一篇笔记待补充。</p>
+    </section>
   </main>
 
-  <footer class="wrap site-footer">
-    <a href="#top">回到顶部</a>
+  <footer class="wrap site-footer" id="github" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">联系</h2>
+    <div class="footer-links">
+      <a href="https://github.com/AlexXPZhu">GitHub @AlexXPZhu</a>
+      <a href="https://github.com/AlexXPZhu/alexxpzhu.github.io">本站源码</a>
+      <!-- 有公开的联系地址后，可以在这里添加链接。 -->
+    </div>
   </footer>
 </body>
 </html>
