@@ -8,37 +8,23 @@
   <link rel="canonical" href="https://alexxpzhu.github.io/">
   <link rel="alternate" hreflang="zh-CN" href="https://alexxpzhu.github.io/">
   <link rel="alternate" hreflang="en" href="https://alexxpzhu.github.io/en/">
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/site.css?v=2">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">跳到正文</a>
-  <header class="site-header">
-    <div class="wrap bar">
-      <a class="site-name" href="#top">朱兴鹏</a>
-      <div class="header-links">
-        <nav class="nav" aria-label="主导航">
-          <a href="#projects">项目</a>
-          <a href="#notes">笔记</a>
-        </nav>
-        <nav class="languages" aria-label="语言">
-          <span aria-current="page">中文</span>
-          <a href="en/" lang="en" hreflang="en">English</a>
-        </nav>
-      </div>
-    </div>
+  <header class="wrap site-header">
+    <nav class="languages" aria-label="语言">
+      <span aria-current="page">中文</span>
+      <a href="en/" lang="en" hreflang="en">English</a>
+    </nav>
   </header>
 
   <main class="wrap" id="main">
     <section class="hero" id="about" aria-labelledby="intro-heading">
-      <div class="hero-heading">
-        <p class="greeting">你好，我是</p>
+      <div class="profile-copy">
         <h1 id="intro-heading">朱兴鹏</h1>
-      </div>
-
-      <img class="portrait" src="assets/avatar.png?v=852e0d10" alt="朱兴鹏的头像" width="150" height="150">
-
-      <div class="hero-details">
-        <p class="intro">我做一些和 AI 工作流、科研自动化有关的小工具，最近的项目涉及文献整理和模型 API 行为观察。</p>
+        <p>我做一些和 AI 工作流、科研自动化有关的小工具。</p>
+        <p>最近的项目包括用于整理文献的 <a href="https://github.com/AlexXPZhu/save-papers-to-zotero">Save Papers to Zotero</a>，以及用于观察模型 API 行为的 <a href="https://github.com/AlexXPZhu/model-radar">ModelRadar</a>。</p>
         <ul class="quick-links" aria-label="常用链接">
           <li><a href="https://github.com/AlexXPZhu">GitHub</a></li>
           <li><a href="mailto:xianpei12138@qq.com">邮箱</a></li>
@@ -47,39 +33,42 @@
           <li><span class="pending">Google Scholar<span class="sr-only">（待补充）</span></span></li>
         </ul>
       </div>
+      <img class="portrait" src="assets/avatar.png?v=852e0d10" alt="朱兴鹏的头像" width="150" height="150">
+    </section>
+
+    <section class="content-section" id="now" aria-labelledby="now-heading">
+      <h2 class="section-title" id="now-heading">近况</h2>
+      <!-- 补充当前项目和关注方向。 -->
+      <ul class="now-list">
+        <li><strong>在做</strong> · 当前项目待补充</li>
+        <li><strong>关注</strong> · 近期研究方向待补充</li>
+      </ul>
     </section>
 
     <section class="content-section" id="projects" aria-labelledby="projects-heading">
       <h2 class="section-title" id="projects-heading">精选项目</h2>
-      <div class="project-grid">
+      <div class="project-list">
         <article class="project">
-          <h3 lang="en">Save Papers to Zotero</h3>
-          <p>把论文导入指定的 Zotero 分类，核验 PDF 是否保存，并加上工作流标签。</p>
-          <a href="https://github.com/AlexXPZhu/save-papers-to-zotero" aria-label="查看 Save Papers to Zotero 项目">查看项目</a>
+          <img class="project-preview" src="https://raw.githubusercontent.com/AlexXPZhu/save-papers-to-zotero/main/save-papers-to-zotero/assets/icon.png" alt="" loading="lazy" referrerpolicy="no-referrer">
+          <div>
+            <h3 lang="en"><a href="https://github.com/AlexXPZhu/save-papers-to-zotero">Save Papers to Zotero</a></h3>
+            <p>把论文导入指定的 Zotero 分类，核验 PDF 是否保存，并加上工作流标签。</p>
+          </div>
         </article>
         <article class="project">
-          <h3 lang="en">ModelRadar</h3>
-          <p>在本地观察模型 API 的响应和参数兼容性，保留原始结果供复核。</p>
-          <a href="https://github.com/AlexXPZhu/model-radar" aria-label="查看 ModelRadar 项目">查看项目</a>
+          <img class="project-preview" src="https://raw.githubusercontent.com/AlexXPZhu/model-radar/main/docs/screenshot.png" alt="" loading="lazy" referrerpolicy="no-referrer">
+          <div>
+            <h3 lang="en"><a href="https://github.com/AlexXPZhu/model-radar">ModelRadar</a></h3>
+            <p>在本地观察模型 API 的响应和参数兼容性，保留原始结果供复核。</p>
+          </div>
         </article>
       </div>
     </section>
 
-    <div class="updates">
-      <section id="now" aria-labelledby="now-heading">
-        <h2 class="section-title" id="now-heading">近况</h2>
-        <!-- 补充当前项目和关注方向。 -->
-        <dl class="now-list">
-          <div><dt>在做</dt><dd>当前项目待补充</dd></div>
-          <div><dt>关注</dt><dd>近期研究方向待补充</dd></div>
-        </dl>
-      </section>
-
-      <section class="notes" id="notes" aria-labelledby="notes-heading">
-        <h2 class="section-title" id="notes-heading">技术笔记</h2>
-        <p>第一篇笔记待补充。</p>
-      </section>
-    </div>
+    <section class="content-section" id="notes" aria-labelledby="notes-heading">
+      <h2 class="section-title" id="notes-heading">技术笔记</h2>
+      <p>第一篇笔记待补充。</p>
+    </section>
   </main>
 
   <footer class="wrap site-footer" id="github" aria-labelledby="contact-heading">
